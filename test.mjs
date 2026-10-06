@@ -1,0 +1,10 @@
+import * as L from './logic.js'; import assert from 'assert';
+const qs=[{id:'a',correct:0},{id:'b',correct:1},{id:'c',correct:2}];
+assert.equal(L.scoreOf({a:0,b:1,c:0},qs),67); assert.equal(L.scoreOf({a:0,b:0,c:0},qs),33);
+assert.equal(L.applyPost({},67).passed,true); assert.equal(L.applyPost({},33).passed,false);
+assert.equal(L.applyPost({postTestBestScore:90,postTestAttempts:1},33).patch.postTestBestScore,90);
+assert.equal(L.applyPost({completed:true},33).patch.completed,true);
+assert.deepEqual(L.remaining(['x','y','z'],{x:true,y:false}),['y','z']);
+assert.equal(L.practiceDone(['x','y'],{x:true,y:true}),true); assert.equal(L.practiceDone(['x','y'],{x:true,y:false}),false);
+const chs=[{id:'1',order:1},{id:'2',order:2}]; assert.equal(L.isUnlocked(chs[1],{}),false); assert.equal(L.isUnlocked(chs[0],{}),true); assert.equal(L.nextChapter(chs,chs[0]).id,'2');
+console.log('logic tests OK');
