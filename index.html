@@ -1,19 +1,46 @@
-<!doctype html><html lang="th"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>วิทยาศาสตร์ ป.1</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f5c63">
-<link rel="apple-touch-icon" href="icon-192.png">
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>วิทยาศาสตร์ ป.1</title>
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#4A90D9"><link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2faf7;--ink:#16302b;--pri:#0f5c63;--sun:#ffc93c;--mute:#c9d6d2}
-@media(prefers-color-scheme:dark){:root{--bg:#10241f;--ink:#e8f5f1;--pri:#5cc6cf;--mute:#3a4f4a}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 Mali,"Noto Sans Thai",sans-serif;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
-#app{max-width:560px;margin:0 auto;padding:12px 0 40px}header{display:flex;justify-content:space-between;align-items:center;gap:8px}
-a{color:var(--pri)}.hero{text-align:center;padding-top:14vh}.hero h1{font-size:2.4rem;margin:.2em 0}.sun{width:84px;height:84px;border-radius:50%;background:var(--sun);margin:0 auto}
-.btn{display:block;width:100%;margin:12px 0;padding:14px;border:0;border-radius:16px;background:var(--pri);color:#fff;font:inherit;font-weight:700;min-height:52px}
-.btn.alt{background:transparent;color:var(--ink);border:3px solid var(--pri);text-align:left}.btn:disabled{opacity:.45}
-.chs{list-style:none;padding:0}.ch{display:flex;gap:14px;align-items:center;width:100%;margin:8px 0;padding:14px;border:3px solid var(--pri);border-radius:18px;background:transparent;color:var(--ink);font:inherit;text-align:left}
-.ch b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--sun);color:#16302b}.ch.lock{border-color:var(--mute);opacity:.6}.ch.lock b{background:var(--mute)}
-fieldset{border:0;padding:0;margin:20px 0}legend{font-weight:700;margin-bottom:6px}.opt{display:flex;gap:10px;align-items:center;padding:12px;margin:6px 0;border:2px solid var(--mute);border-radius:14px}.opt input{width:22px;height:22px}
-.note{opacity:.75;font-size:.9rem}.vid{aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden}.vid iframe{width:100%;height:100%}.h5p{margin:14px 0;padding:24px;border:2px dashed var(--mute);border-radius:14px;text-align:center}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-</style></head><body><main id="app"></main><script type="module" src="app.js"></script></body></html>
+body{margin:0;font-family:Mali,Sarabun,sans-serif;background:#eef6ff;color:#223}
+#a{max-width:480px;margin:auto;padding:16px}h1{text-align:center}
+.b{display:block;width:100%;margin:10px 0;padding:16px;font:inherit;font-size:18px;border:0;border-radius:16px;background:#4A90D9;color:#fff}
+.b:disabled{background:#b8c4d0}.b.g{background:#8895a5}.b.o{background:#fff;color:#223;border:3px solid #cfe0f5}
+.b.ok{background:#2ecc71;color:#fff;border-color:#2ecc71}.b.no{background:#ff7675;color:#fff;border-color:#ff7675}
+.ch{text-align:left}.ch small{display:block;font-size:14px;opacity:.85}
+.card{background:#fff;border-radius:20px;padding:18px;text-align:center}.em{font-size:90px}
+input{width:100%;box-sizing:border-box;padding:14px;font:inherit;font-size:18px;border-radius:14px;border:3px solid #cfe0f5}
+</style></head><body><div id="a"></div><script>
+const FC=null; // วาง firebaseConfig ของคุณที่นี่ เช่น {apiKey:"..",authDomain:"..",projectId:"..",appId:".."} ถ้าเป็น null = โหมดทดลอง (เก็บในเครื่อง)
+const CH=[{t:'สิ่งมีชีวิตและสิ่งไม่มีชีวิต',e:'🌱',
+s:[['🐱','สิ่งมีชีวิต','สิ่งมีชีวิตกินอาหาร หายใจ เจริญเติบโต และสืบพันธุ์ได้ เช่น แมว ต้นไม้ และคน'],['🪨','สิ่งไม่มีชีวิต','สิ่งไม่มีชีวิตไม่กินอาหาร ไม่โตขึ้น และไม่สืบพันธุ์ เช่น ก้อนหิน โต๊ะ และดินสอ'],['🌳','ต้นไม้ก็มีชีวิต','ต้นไม้ต้องการน้ำและแสงแดด และค่อยๆ โตขึ้นทุกวัน']],
+pre:[['ข้อใดคือสิ่งมีชีวิต',['ก้อนหิน','ต้นมะม่วง','ตุ๊กตา'],1],['สิ่งมีชีวิตต้องการอะไร',['อาหาร','ยางลบ','กระเป๋า'],0],['ข้อใดคือสิ่งไม่มีชีวิต',['ปลา','ดอกไม้','โต๊ะ'],2]],
+pr:[['ข้อใดโตขึ้นได้',['ลูกแมว','ก้อนหิน','รองเท้า'],0],['ข้อใดไม่กินอาหาร',['นก','ดินสอ','ปลา'],1],['ต้นไม้ต้องการอะไรเพื่อเจริญเติบโต',['น้ำและแสงแดด','ขนมและน้ำอัดลม','ผ้าห่ม'],0]],
+post:[['ข้อใดคือสิ่งมีชีวิต',['กบ','หนังสือ','จาน'],0],['ข้อใดคือสิ่งไม่มีชีวิต',['ไก่','ก้อนหิน','ผีเสื้อ'],1],['สิ่งมีชีวิตทุกชนิดต้องทำอะไร',['นอนทั้งวัน','กินอาหาร','เล่นเกม'],1],['ข้อใดเป็นสิ่งมีชีวิตทั้งหมด',['แมว ต้นไม้ คน','โต๊ะ เก้าอี้ ดินสอ','หิน ดิน ทราย'],0],['ลูกสุนัขเป็นสิ่งมีชีวิตเพราะอะไร',['เพราะมีสีน้ำตาล','เพราะกินอาหารและโตได้','เพราะอยู่ในบ้าน'],1]]},
+{t:'ร่างกายและประสาทสัมผัส',e:'👀',
+s:[['👀','ตา','เรามองเห็นสีและรูปร่างด้วยตา ใช้ตาดูสิ่งต่างๆ รอบตัว'],['👂','หู จมูก ลิ้น','หูฟังเสียง จมูกดมกลิ่น ลิ้นรับรส'],['✋','ผิวหนัง','ผิวหนังสัมผัสได้ว่าร้อน เย็น เรียบ หรือขรุขระ']],
+pre:[['เราใช้อะไรฟังเสียง',['ตา','หู','จมูก'],1],['เราใช้อะไรดมกลิ่น',['จมูก','ลิ้น','มือ'],0],['ลิ้นใช้ทำอะไร',['ฟังเสียง','รับรส','มองเห็น'],1]],
+pr:[['ใช้อะไรมองดอกไม้สีแดง',['ตา','หู','ลิ้น'],0],['ใช้อะไรรู้ว่าน้ำเย็น',['ตา','ผิวหนัง','จมูก'],1],['ใช้อะไรดมกลิ่นดอกไม้',['จมูก','หู','เท้า'],0]],
+post:[['เราฟังเสียงเพลงด้วยอะไร',['หู','ตา','ลิ้น'],0],['เราชิมรสหวานด้วยอะไร',['ลิ้น','จมูก','หู'],0],['ใช้อะไรสัมผัสว่าผ้านุ่ม',['ผิวหนัง','ตา','หู'],0],['อยากรู้ว่าอาหารหอมไหม ใช้อะไร',['มือ','จมูก','ตา'],1],['อวัยวะใดใช้มองเห็นสีสัน',['หู','ตา','ลิ้น'],1]]}];
+const A=document.getElementById('a'),sh=a=>[...a].sort(()=>Math.random()-.5),C=i=>P.c[i]=P.c[i]||{ps:{}},un=i=>i==0||(P.c[i-1]||{}).ok;
+let U,P,db,cur=null,t=0;
+async function ld(){if(db){const d=await db.collection('progress').doc(U.uid).get();P=d.exists?d.data():{}}else P=JSON.parse(localStorage['sci1_'+U.uid]||'{}');P.c=P.c||{};P.sec=P.sec||0}
+function sv(){if(db)db.collection('progress').doc(U.uid).set(P);else localStorage['sci1_'+U.uid]=JSON.stringify(P)}
+function login(){A.innerHTML='<h1>🔬 วิทยาศาสตร์ ป.1</h1>'+(FC?'<button class=b onclick="gl()">เข้าสู่ระบบด้วย Google</button>':'<p>โหมดทดลอง (ยังไม่ได้ตั้งค่า Google)</p><input id=nm placeholder="ชื่อเล่น"><button class=b onclick="demo()">เริ่มเรียน ▶</button>')}
+async function demo(){const n=document.getElementById('nm').value.trim();if(!n)return;U={uid:'d_'+n,name:n};localStorage.sci1_demo=JSON.stringify(U);await ld();home()}
+function gl(){const p=new firebase.auth.GoogleAuthProvider(),a=firebase.auth();a.signInWithPopup(p).catch(()=>a.signInWithRedirect(p))}
+function out(){sv();if(db)firebase.auth().signOut();else{localStorage.removeItem('sci1_demo');U=null;login()}}
+function home(){cur=null;A.innerHTML=`<h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี ${U.name} · เวลาเรียนรวม ${Math.round(P.sec/60)} นาที</p>`+CH.map((c,i)=>{const k=C(i),o=un(i);return `<button class="b ch" ${o?`onclick="go(${i})"`:'disabled'}>${o?c.e:'🔒'} บทที่ ${i+1} ${c.t}<small>${k.ok?'✅ ผ่านแล้ว · สูงสุด '+k.best+'%':o?'พร้อมเรียน':'ผ่านบทก่อนหน้าก่อนนะ'}</small></button>`}).join('')+'<button class="b g" onclick="out()">ออกจากระบบ</button>'}
+function ask(q,h,cb){const o=sh(q[1].map((x,j)=>[x,j==q[2]]));A.innerHTML=`<div class=card><small>${h}</small><h2>${q[0]}</h2>`+o.map((x,j)=>`<button class="b o" data-j=${j}>${x[0]}</button>`).join('')+'</div>';
+A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const r=o[b.dataset.j][1];A.querySelectorAll('.o').forEach(x=>x.disabled=true);b.classList.add(r?'ok':'no');A.firstChild.insertAdjacentHTML('beforeend',`<p>${r?'🎉 ถูกต้อง!':'🤔 ยังไม่ใช่นะ ไว้ลองใหม่'}</p><button class=b id=n>ต่อไป ▶</button>`);document.getElementById('n').onclick=()=>cb(r)})}
+function go(i){cur=i;C(i).pre==null?pre(i):les(i)}
+function pre(i,n=0,c=0){const q=CH[i].pre;if(n>=q.length){C(i).pre=Math.round(c/q.length*100);sv();return les(i)}ask(q[n],`ก่อนเรียน ${n+1}/${q.length}`,r=>pre(i,n+1,c+r))}
+function les(i,s=0){const L=CH[i].s;if(s>=L.length)return pr(i);const x=L[s];A.innerHTML=`<div class=card><small>บทเรียน ${s+1}/${L.length}</small><div class=em>${x[0]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class="b g" onclick="speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('${x[1]} ${x[2]}');u.lang='th-TH';speechSynthesis.speak(u)">🔊 ฟังเสียง</button><button class=b onclick="speechSynthesis.cancel();les(${i},${s+1})">ต่อไป ▶</button></div>`}
+function pr(i,Q){const k=C(i);Q=Q||CH[i].pr.map((_,j)=>j).filter(j=>!k.ps[j]);if(!Q.length)return po(i);ask(CH[i].pr[Q[0]],`ทบทวน เหลืออีก ${Q.length} ข้อ`,r=>{if(r){k.ps[Q[0]]=1;Q.shift()}else Q.push(Q.shift());sv();pr(i,Q)})}
+function po(i,n=0,c=0){const q=CH[i].post,k=C(i);if(n>=q.length){const p=Math.round(c/q.length*100);k.last=p;k.best=Math.max(k.best||0,p);k.n=(k.n||0)+1;if(p>=60)k.ok=1;sv();A.innerHTML=`<div class=card><div class=em>${p>=60?'🏆':'💪'}</div><h2>ได้ ${p}% (${c}/${q.length})</h2><p>${p>=60?'ผ่านแล้ว! ปลดล็อกบทถัดไป':'ต้องได้อย่างน้อย 60% ไปเรียนอีกรอบนะ'}</p><button class=b onclick="${p>=60?'home()':`les(${i})`}">${p>=60?'กลับหน้าบทเรียน':'ไปเรียนอีกครั้ง'}</button></div>`;return}ask(q[n],`ทดสอบหลังเรียน ${n+1}/${q.length}`,r=>po(i,n+1,c+r))}
+setInterval(()=>{if(U&&!document.hidden){P.sec++;if(cur!=null)C(cur).sec=(C(cur).sec||0)+1;if(++t%30==0)sv()}},1000);
+addEventListener('visibilitychange',()=>document.hidden&&U&&sv());
+(async()=>{navigator.serviceWorker&&navigator.serviceWorker.register('sw.js');
+if(FC){for(const f of['app','auth','firestore'])await new Promise(r=>{const s=document.createElement('script');s.src=`https://www.gstatic.com/firebasejs/10.12.2/firebase-${f}-compat.js`;s.onload=r;document.head.append(s)});firebase.initializeApp(FC);db=firebase.firestore();firebase.auth().onAuthStateChanged(async u=>{if(u){U={uid:u.uid,name:u.displayName||'ผู้เรียน'};await ld();home()}else login()})}
+else if(localStorage.sci1_demo){U=JSON.parse(localStorage.sci1_demo);await ld();home()}else login()})();
+</script></body></html>
