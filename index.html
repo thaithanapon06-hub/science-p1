@@ -2,7 +2,7 @@
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#4A90D9"><link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Mali,Sarabun,sans-serif;background:#eef6ff;color:#223}
+body{margin:0;background:linear-gradient(#bfe3ff,#eef6ff 55%,#d4f3c8) fixed;min-height:100vh;font-family:Mali,Sarabun,sans-serif;color:#223}#a{position:relative;z-index:1;padding-bottom:90px}#bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}#bg span{position:absolute;opacity:.6;animation:f 5s ease-in-out infinite}@keyframes f{50%{transform:translateY(-14px) rotate(8deg)}}#gr{position:fixed;left:-10%;right:-10%;bottom:-40px;height:90px;border-radius:50% 50% 0 0;background:#8fd16b;z-index:0;pointer-events:none}.card{background:rgba(255,255,255,.93)!important}
 #a{max-width:480px;margin:auto;padding:16px}h1{text-align:center}
 .b{display:block;width:100%;margin:10px 0;padding:16px;font:inherit;font-size:18px;border:0;border-radius:16px;background:#4A90D9;color:#fff}
 .b:disabled{background:#b8c4d0}.b.g{background:#8895a5}.b.o{background:#fff;color:#223;border:3px solid #cfe0f5}
@@ -10,7 +10,8 @@ body{margin:0;font-family:Mali,Sarabun,sans-serif;background:#eef6ff;color:#223}
 .ch{text-align:left}.ch small{display:block;font-size:14px;opacity:.85}
 .card{background:#fff;border-radius:20px;padding:18px;text-align:center}.em{font-size:90px}
 input{width:100%;box-sizing:border-box;padding:14px;font:inherit;font-size:18px;border-radius:14px;border:3px solid #cfe0f5}
-</style></head><body><div id="a"></div><script>
+</style></head><body><div id=bg></div><div id=gr></div><div id="a"></div><script>
+['🌈','☁️','☀️','🦋','🌻','🐞','🌱','🐝','🍃','⭐','🐛','🌳','☁️','🌼','🍄','🐦'].forEach((e,i)=>bg.insertAdjacentHTML('beforeend',`<span style="left:${i*37%88+2}vw;top:${i*53%80+3}vh;font-size:${28+i*7%26}px;animation-delay:${i%5*.7}s">${e}</span>`));
 const FC={apiKey:"AIzaSyB91biFPmWJJj-TWkqj4LGWCr_UY7FdMhg",authDomain:"science-p1.firebaseapp.com",projectId:"science-p1",storageBucket:"science-p1.firebasestorage.app",messagingSenderId:"866283047084",appId:"1:866283047084:web:eb31d746992355592d3709"};
 const CH=[{t:'สิ่งมีชีวิตและสิ่งไม่มีชีวิต',e:'🌱',
 s:[['🐱','สิ่งมีชีวิต','สิ่งมีชีวิตกินอาหาร หายใจ เจริญเติบโต และสืบพันธุ์ได้ เช่น แมว ต้นไม้ และคน'],['🪨','สิ่งไม่มีชีวิต','สิ่งไม่มีชีวิตไม่กินอาหาร ไม่โตขึ้น และไม่สืบพันธุ์ เช่น ก้อนหิน โต๊ะ และดินสอ'],['🌳','ต้นไม้ก็มีชีวิต','ต้นไม้ต้องการน้ำและแสงแดด และค่อยๆ โตขึ้นทุกวัน']],
@@ -26,11 +27,15 @@ const A=document.getElementById('a'),sh=a=>[...a].sort(()=>Math.random()-.5),C=i
 let U,P,db,cur=null,t=0;
 async function ld(){if(db){const d=await db.collection('progress').doc(U.uid).get();P=d.exists?d.data():{}}else P=JSON.parse(localStorage['sci1_'+U.uid]||'{}');P.c=P.c||{};P.sec=P.sec||0}
 function sv(){if(db)db.collection('progress').doc(U.uid).set(P);else localStorage['sci1_'+U.uid]=JSON.stringify(P)}
+async function hx(s){return[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(U.uid+s)))].map(b=>b.toString(16).padStart(2,'0')).join('')}
+function gate(){const n=!P.h;A.innerHTML=`<h1>🔑 ${n?'ตั้งรหัสของเรา':'ใส่รหัสของเรา'}</h1><div class=card>${n?'<input id=nk placeholder="ชื่อเล่นของเรา" maxlength=20 style="margin-bottom:8px">':`<p>สวัสดี ${P.nm||U.name}</p>`}<input id=pw type=password placeholder="รหัส">${n?'<input id=pw2 type=password placeholder="ใส่รหัสอีกครั้ง" style="margin-top:8px">':''}<p id=er style="color:#d63031"></p><button class=b onclick="chk()">${n?'บันทึกรหัส':'เข้าเรียน'} ▶</button><small>${n?'⚠️ ตั้งรหัสเอง ลืมแล้วกู้คืนไม่ได้นะ แนะนำให้ใช้ชื่อจริงของตัวเองเป็นรหัส จะได้จำง่าย':'ลืมรหัสแล้วกู้คืนไม่ได้'}</small></div><button class="b g" onclick="out()">ออกจากระบบ</button>`}
+async function chk(){const v=document.getElementById('pw').value.trim(),e=document.getElementById('er');if(!v){e.textContent='กรอกรหัสก่อนนะ';return}
+if(!P.h){const k=document.getElementById('nk').value.trim();if(!k){e.textContent='ใส่ชื่อเล่นก่อนนะ';return}if(v!=document.getElementById('pw2').value.trim()){e.textContent='รหัสสองช่องไม่ตรงกัน';return}P.nm=k;P.h=await hx(v);sv();home()}else if(await hx(v)==P.h)home();else e.textContent='รหัสไม่ถูกต้อง ลองใหม่นะ'}
 function login(){A.innerHTML='<h1>🔬 วิทยาศาสตร์ ป.1</h1>'+(FC?'<button class=b onclick="gl()">เข้าสู่ระบบด้วย Google</button>':'<p>โหมดทดลอง (ยังไม่ได้ตั้งค่า Google)</p><input id=nm placeholder="ชื่อเล่น"><button class=b onclick="demo()">เริ่มเรียน ▶</button>')}
-async function demo(){const n=document.getElementById('nm').value.trim();if(!n)return;U={uid:'d_'+n,name:n};localStorage.sci1_demo=JSON.stringify(U);await ld();home()}
+async function demo(){const n=document.getElementById('nm').value.trim();if(!n)return;U={uid:'d_'+n,name:n};localStorage.sci1_demo=JSON.stringify(U);await ld();gate()}
 function gl(){const p=new firebase.auth.GoogleAuthProvider(),a=firebase.auth();a.signInWithPopup(p).catch(()=>a.signInWithRedirect(p))}
 function out(){sv();if(db)firebase.auth().signOut();else{localStorage.removeItem('sci1_demo');U=null;login()}}
-function home(){cur=null;A.innerHTML=`<h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี ${U.name} · เวลาเรียนรวม ${Math.round(P.sec/60)} นาที</p>`+CH.map((c,i)=>{const k=C(i),o=un(i);return `<button class="b ch" ${o?`onclick="go(${i})"`:'disabled'}>${o?c.e:'🔒'} บทที่ ${i+1} ${c.t}<small>${k.ok?'✅ ผ่านแล้ว · สูงสุด '+k.best+'%':o?'พร้อมเรียน':'ผ่านบทก่อนหน้าก่อนนะ'}</small></button>`}).join('')+'<button class="b g" onclick="out()">ออกจากระบบ</button>'}
+function home(){cur=null;A.innerHTML=`<h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี ${P.nm||U.name} · เวลาเรียนรวม ${Math.round(P.sec/60)} นาที</p>`+CH.map((c,i)=>{const k=C(i),o=un(i);return `<button class="b ch" ${o?`onclick="go(${i})"`:'disabled'}>${o?c.e:'🔒'} บทที่ ${i+1} ${c.t}<small>${k.ok?'✅ ผ่านแล้ว · สูงสุด '+k.best+'%':o?'พร้อมเรียน':'ผ่านบทก่อนหน้าก่อนนะ'}</small></button>`}).join('')+'<button class="b g" onclick="out()">ออกจากระบบ</button>'}
 function ask(q,h,cb){const o=sh(q[1].map((x,j)=>[x,j==q[2]]));A.innerHTML=`<div class=card><small>${h}</small><h2>${q[0]}</h2>`+o.map((x,j)=>`<button class="b o" data-j=${j}>${x[0]}</button>`).join('')+'</div>';
 A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const r=o[b.dataset.j][1];A.querySelectorAll('.o').forEach(x=>x.disabled=true);b.classList.add(r?'ok':'no');A.firstChild.insertAdjacentHTML('beforeend',`<p>${r?'🎉 ถูกต้อง!':'🤔 ยังไม่ใช่นะ ไว้ลองใหม่'}</p><button class=b id=n>ต่อไป ▶</button>`);document.getElementById('n').onclick=()=>cb(r)})}
 function go(i){cur=i;C(i).pre==null?pre(i):les(i)}
@@ -41,6 +46,6 @@ function po(i,n=0,c=0){const q=CH[i].post,k=C(i);if(n>=q.length){const p=Math.ro
 setInterval(()=>{if(U&&!document.hidden){P.sec++;if(cur!=null)C(cur).sec=(C(cur).sec||0)+1;if(++t%30==0)sv()}},1000);
 addEventListener('visibilitychange',()=>document.hidden&&U&&sv());
 (async()=>{navigator.serviceWorker&&navigator.serviceWorker.register('sw.js');
-if(FC){for(const f of['app','auth','firestore'])await new Promise(r=>{const s=document.createElement('script');s.src=`https://www.gstatic.com/firebasejs/10.12.2/firebase-${f}-compat.js`;s.onload=r;document.head.append(s)});firebase.initializeApp(FC);db=firebase.firestore();firebase.auth().onAuthStateChanged(async u=>{if(u){U={uid:u.uid,name:u.displayName||'ผู้เรียน'};await ld();home()}else login()})}
-else if(localStorage.sci1_demo){U=JSON.parse(localStorage.sci1_demo);await ld();home()}else login()})();
+if(FC){for(const f of['app','auth','firestore'])await new Promise(r=>{const s=document.createElement('script');s.src=`https://www.gstatic.com/firebasejs/10.12.2/firebase-${f}-compat.js`;s.onload=r;document.head.append(s)});firebase.initializeApp(FC);db=firebase.firestore();firebase.auth().onAuthStateChanged(async u=>{if(u){U={uid:u.uid,name:u.displayName||'ผู้เรียน'};await ld();gate()}else login()})}
+else if(localStorage.sci1_demo){U=JSON.parse(localStorage.sci1_demo);await ld();gate()}else login()})();
 </script></body></html>
