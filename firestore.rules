@@ -1,6 +1,32 @@
 rules_version = '2';
-service cloud.firestore { match /databases/{db}/documents {
-  match /chapters/{id} { allow read: if request.auth != null; allow write: if false; }
-  match /users/{uid} { allow read, write: if request.auth != null && request.auth.uid == uid; }
-  match /progress/{uid}/chapters/{id} { allow read, write: if request.auth != null && request.auth.uid == uid; }
-}}
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && exists(/databases/$(database)/documents/teachers/$(request.auth.token.email));
+    }
+    // รายชื่อครูที่อนุมัติ: เพิ่มจาก Console เท่านั้น
+    match /teachers/{email} {
+      allow get: if request.auth != null && request.auth.token.email == email;
+    }
+    // ห้องเรียน: รหัสห้อง = uid ครู + _1 หรือ _2 (จึงมีได้ไม่เกิน 2 ห้อง)
+    match /rooms/{room} {
+      allow read, write: if isTeacher() && room.matches(request.auth.uid + '_[12]');
+      // รายชื่อ (ชื่อจริง): เลขที่ 1-25 เท่านั้น (จึงมีได้ไม่เกิน 25 คนต่อห้อง)
+      match /roster/{seat} {
+        allow read, write: if isTeacher() && room.matches(request.auth.uid + '_[12]')
+          && seat.matches('^([1-9]|1[0-9]|2[0-5])$');
+      }
+    }
+    // ความคืบหน้านักเรียน: รหัสเอกสาร = รหัส 6 ตัวที่ครูแจก
+    match /progress/{code} {
+      allow get: if true;
+      allow list: if isTeacher() && resource.data.owner == request.auth.uid;
+      allow create: if isTeacher() && request.resource.data.owner == request.auth.uid && code.size() == 6;
+      allow update: if (isTeacher() && resource.data.owner == request.auth.uid)
+        || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sec', 'c']);
+      allow delete: if isTeacher() && resource.data.owner == request.auth.uid;
+    }
+  }
+}
