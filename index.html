@@ -13,7 +13,7 @@ input{width:100%;box-sizing:border-box;padding:14px;font:inherit;font-size:18px;
 </style></head><body><div id=bg></div><div id=gr></div><div id="a"></div><script>
 ['🌈','☁️','☀️','🦋','🌻','🐞','🌱','🐝','🍃','⭐','🐛','🌳','☁️','🌼','🍄','🐦'].forEach((e,i)=>bg.insertAdjacentHTML('beforeend',`<span style="left:${i*37%88+2}vw;top:${i*53%80+3}vh;font-size:${28+i*7%26}px;animation-delay:${i%5*.7}s">${e}</span>`));
 const FC={apiKey:"AIzaSyB91biFPmWJJj-TWkqj4LGWCr_UY7FdMhg",authDomain:"science-p1.firebaseapp.com",projectId:"science-p1",storageBucket:"science-p1.firebasestorage.app",messagingSenderId:"866283047084",appId:"1:866283047084:web:eb31d746992355592d3709"};
-const CH=[{t:'เรียนรู้แบบนักวิทยาศาสตร์',e:'🔍',v:'lAhwXzHnuKY',
+let CH=[{t:'เรียนรู้แบบนักวิทยาศาสตร์',e:'🔍',v:'lAhwXzHnuKY',
 s:[['👀','สังเกต','นักวิทยาศาสตร์ใช้ตา หู จมูก ลิ้น และผิวหนังสังเกตสิ่งต่างๆ'],['📏','วัด','เราวัดความยาวได้ด้วยไม้บรรทัด หรือใช้คืบและก้าวของเราก็ได้'],['🧺','จำแนก','เราแบ่งสิ่งของเป็นกลุ่มได้ เช่น แบ่งตามสี รูปร่าง หรือขนาด'],['💡','ลงความเห็น','เมื่อเห็นพื้นเปียก เราคิดอธิบายได้ว่าฝนอาจตก']],
 pre:[['นักวิทยาศาสตร์ใช้อะไรสังเกต',['ประสาทสัมผัส','ขนม','ของเล่น'],0],['เราใช้อะไรวัดความยาว',['ช้อน','ไม้บรรทัด','แก้วน้ำ'],1]],
 pr:[['การดมกลิ่นดอกไม้คือการทำอะไร',['วัด','สังเกต','จำแนก'],1],['การแบ่งลูกบอลตามสีคือการทำอะไร',['จำแนก','วัด','ฟัง'],0],['วัดความยาวโต๊ะด้วยอะไรได้',['ตา','คืบมือ','จมูก'],1]],
@@ -49,28 +49,15 @@ pre:[['กลางวันเห็นอะไรบนท้องฟ้า'
 pr:[['กลางคืนเห็นอะไรบนท้องฟ้า',['ดวงจันทร์และดาว','ดวงอาทิตย์เท่านั้น','รถไฟ'],0],['ข้อใดเกิดขึ้นตอนกลางวัน',['ท้องฟ้ามืด','ท้องฟ้าสว่าง','เห็นดาวเต็มฟ้า'],1],['ทำไมไม่ควรมองดวงอาทิตย์ตรงๆ',['ดวงอาทิตย์เหม็น','ไม่มีเหตุผล','แสงจ้าทำให้ตาเจ็บ'],2]],
 post:[['ดวงอาทิตย์ปรากฏตอนใด',['กลางวัน','กลางคืน','ตลอดคืน'],0],['ดวงจันทร์และดาวเห็นชัดตอนใด',['เที่ยงวัน','กลางคืน','ตอนบ่าย'],1],['กลางวันท้องฟ้ามีลักษณะอย่างไร',['มืดสนิท','สว่าง','เป็นสีดำ'],1],['ควรทำอย่างไรกับดวงอาทิตย์',['จ้องนานๆ','ไม่มองตรงๆ','ส่องด้วยกล้อง'],1]]}];
 
-// ===== โครงสร้างตามหนังสือ สสวท. ป.1 (4 หน่วย 7 บท 12 เรื่อง) =====
-// R[บท] = [[ชื่อเรื่อง,[ชื่อวิดีโอ...],[สไลด์: เลขสไลด์เดิมของบท หรือ [emoji,หัวข้อ,ข้อความ]]],...]
-const R=[
-[['การสืบเสาะหาความรู้',['เรื่องที่ 1 การสืบเสาะหาความรู้','กิจกรรม 1 จมหรือลอย'],[['🔎','สืบเสาะหาความรู้','นักวิทยาศาสตร์ตั้งคำถาม แล้วลองทำเพื่อหาคำตอบ เช่น ลองวางของในน้ำดูว่าจมหรือลอย'],1]],
-['การสังเกตและการลงความเห็นจากข้อมูล',['เรื่องที่ 2 การสังเกตและการลงความเห็นจากข้อมูล','กิจกรรมที่ 2 การสังเกตและการลงความเห็นจากข้อมูลทำได้อย่างไร'],[0,3]],
-['การจำแนกประเภท',['เรื่องที่ 3 การจำแนกประเภท','กิจกรรมที่ 3 จำแนกสิ่งของได้อย่างไร'],[2]],
-['การพยากรณ์',['เรื่องที่ 4 การพยากรณ์','กิจกรรมที่ 4 พยากรณ์ได้อย่างไร'],[['🔮','พยากรณ์','เราคาดการณ์สิ่งที่จะเกิดขึ้นจากสิ่งที่เคยเห็น เช่น ท้องฟ้ามืดครึ้ม ฝนอาจจะตก']]]],
-[['ส่วนต่าง ๆ ของร่างกาย',['เรื่องที่ 1 ส่วนต่าง ๆ ของร่างกาย','กิจกรรมที่ 1.1 ส่วนต่าง ๆ ของร่างกายเรามีอะไรบ้าง ตอนที่ 1','กิจกรรมที่ 1.1 ส่วนต่าง ๆ ของร่างกายเรามีอะไรบ้าง ตอนที่ 2','กิจกรรมที่ 1.2 ส่วนต่าง ๆ ของร่างกายทำหน้าที่อะไร ตอนที่ 1','กิจกรรมที่ 1.2 ส่วนต่าง ๆ ของร่างกายทำหน้าที่อะไร ตอนที่ 2'],[0,1,2]]],
-[['ส่วนต่าง ๆ ของสัตว์และพืช',['เรื่องที่ 1 ส่วนต่าง ๆ ของสัตว์และพืช','กิจกรรมที่ 1.1 มารู้จักสัตว์กันไหม','กิจกรรมที่ 1.2 มารู้จักพืชกันไหม'],[0,1]],
-['บริเวณที่สัตว์และพืชอาศัยอยู่',['เรื่องที่ 2 บริเวณที่สัตว์และพืชอาศัยอยู่','กิจกรรมที่ 2 สัตว์และพืชอยู่ที่ใดบ้าง'],[['🏞️','ที่อยู่ของสัตว์และพืช','สัตว์และพืชอาศัยอยู่ในที่ต่างกัน เช่น ปลาอยู่ในน้ำ นกอยู่บนต้นไม้ ต้นไม้อยู่บนบก'],2]]],
-[['วัตถุและวัสดุ',['เรื่องที่ 1 วัตถุและวัสดุ','กิจกรรมที่ 1.1 ชนิดของวัสดุมีอะไรบ้าง','กิจกรรมที่ 1.2 วัสดุแต่ละชนิดมีสมบัติอย่างไร'],[0,1]],
-['วัสดุในชีวิตประจำวัน',['เรื่องที่ 2 วัสดุในชีวิตประจำวัน','กิจกรรมที่ 2 วัตถุต่าง ๆ ทำจากวัสดุอะไรบ้าง'],[2]]],
-[['เสียงรอบตัวเรา',['เรื่องที่ 1 เสียงรอบตัวเรา','กิจกรรมที่ 1.1 เสียงเกิดได้อย่างไร','กิจกรรมที่ 1.2 เสียงเคลื่อนที่ไปทิศทางใด'],[0,1,2]]],
-[['ลักษณะของหิน',['เรื่องที่ 1 ลักษณะของหิน','กิจกรรมที่ 1 หินมีลักษณะอย่างไร'],[0,1,2]]],
-[['ดาวบนท้องฟ้า',['เรื่องที่ 1 ดาวบนท้องฟ้า','กิจกรรมที่ 1.1 มองเห็นดาวอะไรบ้างบนท้องฟ้า','กิจกรรมที่ 1.2 กลางวันดาวหายไปไหน'],[0,1,2]]]];
-const UN=[['หน่วยที่ 1 การเรียนรู้สิ่งต่าง ๆ รอบตัว','🔬',[0]],['หน่วยที่ 2 ตัวเรา สัตว์และพืชรอบตัวเรา','🌱',[1,2]],['หน่วยที่ 3 สิ่งต่าง ๆ รอบตัวเรา','🧰',[3,4]],['หน่วยที่ 4 โลกและท้องฟ้าของเรา','🌏',[5,6]]];
-// รหัสวิดีโอ YouTube ของคุณครู ใส่ทีละตัว คีย์ = 'บท.เรื่อง.วิดีโอ' (นับจาก 0) เช่น '0.0.0':'abc123XYZ_-'
-// ยังไม่ใส่ = แสดง "วิดีโอกำลังมาเร็วๆ นี้" และกดไปต่อได้
-const VID={};
-CH[1].t='ร่างกาย';
+// ===== 4 ด่าน = 4 หน่วย (รวมเนื้อหาของบทเดิมเป็นก้อนเดียวต่อด่าน) =====
+// UN = [ชื่อด่าน, emoji, เลขบทเดิมที่รวม, รหัสวิดีโอ YouTube ของด่านนั้น]
+const UN=[['ด่านที่ 1 การเรียนรู้สิ่งต่าง ๆ รอบตัว','🔬',[0],'m-C0pPyDPA4'],['ด่านที่ 2 ตัวเรา สัตว์และพืชรอบตัวเรา','🌱',[1,2],'4XL5ZXjAi8I'],['ด่านที่ 3 สิ่งต่าง ๆ รอบตัวเรา','🧰',[3,4],'q-7mRMidNVk'],['ด่านที่ 4 โลกและท้องฟ้าของเรา','🌏',[5,6],'tQ21emH1ODQ']];
+CH=UN.map(u=>{const o=u[2].map(i=>CH[i]),m=k=>o.flatMap(c=>c[k]);return{t:u[0],e:u[1],v:u[3],s:m('s'),pre:m('pre'),pr:m('pr'),post:m('post')}});
+CH[0].s.unshift(['🔎','สืบเสาะหาความรู้','นักวิทยาศาสตร์ตั้งคำถาม แล้วลองทำเพื่อหาคำตอบ เช่น ลองวางของในน้ำดูว่าจมหรือลอย']);
+CH[0].s.push(['🔮','พยากรณ์','เราคาดการณ์สิ่งที่จะเกิดขึ้นจากสิ่งที่เคยเห็น เช่น ท้องฟ้ามืดครึ้ม ฝนอาจจะตก']);
+CH[1].s.push(['🏞️','ที่อยู่ของสัตว์และพืช','สัตว์และพืชอาศัยอยู่ในที่ต่างกัน เช่น ปลาอยู่ในน้ำ นกอยู่บนต้นไม้ ต้นไม้อยู่บนบก']);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),A=document.getElementById('a'),sh=a=>[...a].sort(()=>Math.random()-.5),C=i=>P.c[i]=P.c[i]||{ps:{}},un=i=>TR||i==0||(P.c[i-1]||{}).ok;
-let U,P,db,cur=null,t=0,TR=0,D=0;
+let U,P,db,cur=null,t=0,TR=0,D=0,BZ=0;
 async function ld(){if(db){const d=await db.collection('progress').doc(U.uid).get();P=d.exists?d.data():{}}else P=JSON.parse(localStorage['sci1_'+U.uid]||'{}');P.c=P.c||{};P.sec=P.sec||0}
 function sv(n){D=1;if(n)fl()}
 function fl(){if(TR||!U||!D)return;D=0;if(db)db.collection('progress').doc(U.uid).update({sec:P.sec,c:P.c}).catch(()=>{D=1})}
@@ -84,22 +71,20 @@ async function demo(){const n=document.getElementById('nm').value.trim();if(!n)r
 function gl(){const p=new firebase.auth.GoogleAuthProvider(),a=firebase.auth();a.signInWithPopup(p).catch(()=>a.signInWithRedirect(p))}
 function trial(){TR=1;U={uid:'trial',name:'นักทดลอง'};P={c:{},sec:0,nm:'นักทดลอง'};home()}
 function out(){if(!TR)sv(1);TR=0;U=null;P=null;login()}
-function home(){cur=null;A.innerHTML=`<h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี ${esc(P.nm||U.name)}${TR?' · 🎈 โหมดทดลอง (ไม่บันทึกคะแนน)':' · เวลาเรียนรวม '+Math.round(P.sec/60)+' นาที'}</p>`+UN.map(u=>`<h2>${u[1]} ${u[0]}</h2>`+u[2].map((i,x)=>{const c=CH[i],k=C(i),o=un(i);return `<button class="b ch" ${o?`onclick="go(${i})"`:'disabled'}>${o?c.e:'🔒'} บทที่ ${x+1} ${c.t}<small>${k.ok?'✅ ผ่านแล้ว · สูงสุด '+k.best+'%':o?'พร้อมเรียน':'ผ่านบทก่อนหน้าก่อนนะ'}</small></button>`}).join('')).join('')+`<button class="b g" onclick="out()">${TR?'กลับหน้าแรก':'ออกจากระบบ'}</button>`}
+function home(){BZ=0;cur=null;const b=document.getElementById('bk');if(b)b.style.display='none';A.style.paddingTop='';A.innerHTML=`<h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี ${esc(P.nm||U.name)}${TR?' · 🎈 โหมดทดลอง (ไม่บันทึกคะแนน)':' · เวลาเรียนรวม '+Math.round(P.sec/60)+' นาที'}</p>`+UN.map((u,i)=>{const k=C(i),o=un(i);return `<button class="b ch" ${o?`onclick="go(${i})"`:'disabled'}>${o?u[1]:'🔒'} ${u[0]}<small>${k.ok?'✅ ผ่านแล้ว · สูงสุด '+k.best+'%':!o?'ผ่านด่านก่อนหน้าก่อนนะ':k.pre!=null?'เรียนต่อได้เลย':'พร้อมเล่น'}</small></button>`}).join('')+`<button class="b g" onclick="out()">${TR?'กลับหน้าแรก':'ออกจากระบบ'}</button>`}
 function ask(q,h,cb){const o=sh(q[1].map((x,j)=>[x,j==q[2]]));A.innerHTML=`<div class=card><small>${h}</small><h2>${q[0]}</h2>`+o.map((x,j)=>`<button class="b o" data-j=${j}>${x[0]}</button>`).join('')+'</div>';
 A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const r=o[b.dataset.j][1];A.querySelectorAll('.o').forEach(x=>x.disabled=true);b.classList.add(r?'ok':'no');A.firstChild.insertAdjacentHTML('beforeend',`<p>${r?'🎉 ถูกต้อง!':'🤔 ยังไม่ใช่นะ ไว้ลองใหม่'}</p><button class=b id=n>ต่อไป ▶</button>`);document.getElementById('n').onclick=()=>cb(r)})}
-const ST=i=>{const a=[];R[i].forEach((r,j)=>{r[1].forEach((_,n)=>a.push([0,j,n]));a.push([1,j])});return a};
-function go(i){cur=i;C(i).pre==null?pre(i):nx(i,0)}
-function pre(i,n=0,c=0){const q=CH[i].pre;if(n>=q.length){C(i).pre=Math.round(c/q.length*100);sv(1);return nx(i,0)}ask(q[n],`ก่อนเรียน ${n+1}/${q.length}`,r=>pre(i,n+1,c+r))}
-function nx(i,p){const S=ST(i);if(p>=S.length)return pr(i);S[p][0]?les(i,p,0):vid(i,p)}
-function vid(i,p){const[,j,n]=ST(i)[p],k=C(i),K=i+'.'+j+'.'+n,id=VID[K],T=R[i][j][1][n],g=x=>document.getElementById(x),w=Math.min(innerWidth-70,420);if(typeof k.vd!='object')k.vd={};
-if(!id){A.innerHTML=`<div class=card><small>วิดีโอบทเรียน</small><div class=em>🎬</div><h2>${T}</h2><p>วิดีโอกำลังมาเร็วๆ นี้ ไปเรียนต่อกันก่อนนะ</p><button class=b onclick="nx(${i},${p+1})">ไปต่อ ▶</button></div>`;return}
-A.innerHTML=`<div class=card><small>${T}</small><iframe id=yt width=${w} height=${Math.round(w*9/16)} src="https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1" allow="encrypted-media;fullscreen" allowfullscreen style="border:0;max-width:100%"></iframe><p id=vm>🔒 ดูวิดีโอให้จบก่อนนะ</p><p><a href="https://youtu.be/${id}" target=_blank>เปิดดูใน YouTube</a></p><button class=b id=vn disabled onclick="nx(${i},${p+1})">ไปต่อ ▶</button></div>`;
-const ok=()=>{if(!g('vn'))return;g('vm').textContent='🎉 ดูจบแล้ว!';g('vn').disabled=false;if(!k.vd[K]){k.vd[K]=1;sv()}},mk=()=>new YT.Player('yt',{events:{onStateChange:e=>e.data==0&&ok()}});
+function go(i){cur=i;BZ=1;let b=document.getElementById('bk');if(!b){document.body.insertAdjacentHTML('beforeend','<button id=bk class="b g" style="position:fixed;top:8px;left:8px;z-index:9" onclick="bk()">⬅ กลับหน้าหลัก</button>');b=document.getElementById('bk')}b.style.display='';A.style.paddingTop='52px';const k=C(i);k.pre==null?pre(i):!k.vd?vid(i):!k.sd?les(i,0):pr(i)}
+function bk(){if(BZ&&!confirm('แน่ใจหรือคะ น้อง'+(P.nm||U.name)+'? ถ้าออกตอนนี้ ต้องกลับมาเริ่มขั้นนี้ใหม่ตั้งแต่ต้นนะ'))return;speechSynthesis.cancel();home()}
+function pre(i,n=0,c=0){const q=CH[i].pre;BZ=1;if(n>=q.length){C(i).pre=Math.round(c/q.length*100);sv(1);return vid(i)}ask(q[n],`ก่อนเรียน ${n+1}/${q.length}`,r=>pre(i,n+1,c+r))}
+function vid(i){const k=C(i),id=CH[i].v,g=x=>document.getElementById(x),w=Math.min(innerWidth-70,420);BZ=1;
+A.innerHTML=`<div class=card><small>${UN[i][0]} · วิดีโอ</small><iframe id=yt width=${w} height=${Math.round(w*9/16)} src="https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1" allow="encrypted-media;fullscreen" allowfullscreen style="border:0;max-width:100%"></iframe><p id=vm>🔒 ดูวิดีโอให้จบก่อนนะ</p><p><a href="https://youtu.be/${id}" target=_blank>เปิดดูใน YouTube</a></p><button class=b id=vn disabled onclick="les(${i},0)">ไปต่อ ▶</button></div>`;
+const ok=()=>{if(!g('vn'))return;g('vm').textContent='🎉 ดูจบแล้ว!';g('vn').disabled=false;if(!k.vd){k.vd=1;sv()}},mk=()=>new YT.Player('yt',{events:{onStateChange:e=>e.data==0&&ok()}});
 if(window.YT&&YT.Player)mk();else{window.onYouTubeIframeAPIReady=mk;if(!window.yts){yts=1;const x=document.createElement('script');x.src='https://www.youtube.com/iframe_api';document.head.append(x)}}
-setTimeout(()=>{if(g('vn')&&g('vn').disabled&&!(window.YT&&YT.Player))ok()},8000);if(k.vd[K])ok()}
-function les(i,p,s){const j=ST(i)[p][1],r=R[i][j],L=r[2].map(x=>typeof x=='number'?CH[i].s[x]:x);if(s>=L.length){const k=C(i);if(typeof k.sd!='object')k.sd={};k.sd[j]=1;sv();return nx(i,p+1)}const x=L[s];A.innerHTML=`<div class=card><small>${r[0]} · สไลด์ ${s+1}/${L.length}</small><div class=em>${x[0]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class="b g" onclick="speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('${x[1]} ${x[2]}');u.lang='th-TH';speechSynthesis.speak(u)">🔊 ฟังเสียง</button><button class=b onclick="speechSynthesis.cancel();les(${i},${p},${s+1})">ต่อไป ▶</button></div>`}
-function pr(i,Q){const k=C(i);Q=Q||CH[i].pr.map((_,j)=>j).filter(j=>!k.ps[j]);if(!Q.length)return po(i);ask(CH[i].pr[Q[0]],`ทบทวน เหลืออีก ${Q.length} ข้อ`,r=>{if(r){k.ps[Q[0]]=1;Q.shift()}else Q.push(Q.shift());sv();pr(i,Q)})}
-function po(i,n=0,c=0){const q=CH[i].post,k=C(i);if(n>=q.length){const p=Math.round(c/q.length*100);k.last=p;k.best=Math.max(k.best||0,p);k.n=(k.n||0)+1;if(p>=60)k.ok=1;sv(1);A.innerHTML=`<div class=card><div class=em>${p>=60?'🏆':'💪'}</div><h2>ได้ ${p}% (${c}/${q.length})</h2><p>${p>=60?'ผ่านแล้ว! ปลดล็อกบทถัดไป':'ต้องได้อย่างน้อย 60% ไปเรียนอีกรอบนะ'}</p><button class=b onclick="${p>=60?'home()':`nx(${i},0)`}">${p>=60?'กลับหน้าบทเรียน':'ไปเรียนอีกครั้ง'}</button></div>`;return}ask(q[n],`ทดสอบหลังเรียน ${n+1}/${q.length}`,r=>po(i,n+1,c+r))}
+setTimeout(()=>{if(g('vn')&&g('vn').disabled&&!(window.YT&&YT.Player))ok()},8000);if(k.vd)ok()}
+function les(i,s){const L=CH[i].s;BZ=1;if(s>=L.length){C(i).sd=1;sv();return pr(i)}const x=L[s];A.innerHTML=`<div class=card><small>${UN[i][0]} · สไลด์ ${s+1}/${L.length}</small><div class=em>${x[0]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class="b g" onclick="speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('${x[1]} ${x[2]}');u.lang='th-TH';speechSynthesis.speak(u)">🔊 ฟังเสียง</button><button class=b onclick="speechSynthesis.cancel();les(${i},${s+1})">ต่อไป ▶</button></div>`}
+function pr(i,Q){const k=C(i);BZ=1;if(k.rv)return po(i);Q=Q||CH[i].pr.map((_,j)=>j);if(!Q.length){k.rv=1;sv(1);return po(i)}ask(CH[i].pr[Q[0]],`ทบทวน เหลืออีก ${Q.length} ข้อ`,r=>{r?Q.shift():Q.push(Q.shift());pr(i,Q)})}
+function po(i,n=0,c=0){const q=CH[i].post,k=C(i);if(n>=q.length){const p=Math.round(c/q.length*100);k.last=p;k.best=Math.max(k.best||0,p);k.n=(k.n||0)+1;if(p>=60)k.ok=1;sv(1);BZ=0;A.innerHTML=`<div class=card><div class=em>${p>=60?'🏆':'💪'}</div><h2>ได้ ${p}% (${c}/${q.length})</h2><p>${p>=60?'ผ่านแล้ว! ปลดล็อกด่านถัดไป':'ต้องได้อย่างน้อย 60% ไปเรียนอีกรอบนะ'}</p><button class=b onclick="${p>=60?'home()':`vid(${i})`}">${p>=60?'กลับหน้าหลัก':'ไปเรียนอีกครั้ง'}</button></div>`;return}ask(q[n],`ทดสอบหลังเรียน ${n+1}/${q.length}`,r=>po(i,n+1,c+r))}
 setInterval(()=>{if(U&&!document.hidden){P.sec++;D=1;if(cur!=null)C(cur).sec=(C(cur).sec||0)+1;if(++t%60==0)fl()}},1000);
 addEventListener('visibilitychange',()=>document.hidden&&U&&(D=1,fl()));
 (async()=>{navigator.serviceWorker&&navigator.serviceWorker.register('sw.js');
