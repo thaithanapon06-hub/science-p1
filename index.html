@@ -18,7 +18,7 @@ input{width:100%;box-sizing:border-box;padding:14px;font:inherit;font-size:18px;
 .sp{display:flex;gap:4px;margin-bottom:8px}.sp span{flex:1;background:#e9ecef;border-radius:10px;padding:4px 2px;text-align:center;font-size:12px}.sp .d{background:#b2f2bb}.sp .c{background:#ffd43b;font-weight:700;animation:pu 1.2s infinite}
 .card{box-shadow:0 6px 0 rgba(0,0,0,.08);animation:pop .3s}
 @keyframes bn{50%{transform:translateY(-6px) rotate(6deg)}}@keyframes pu{50%{transform:scale(1.06)}}@keyframes pop{from{transform:scale(.94);opacity:0}}@keyframes fl{from{transform:translateY(-10vh) rotate(0)}to{transform:translateY(110vh) rotate(540deg)}}.cf{position:fixed;top:0;font-size:26px;z-index:99;pointer-events:none;animation:fl 2.6s linear forwards}
-.say{display:inline-block;width:auto;padding:6px 14px;font-size:14px;margin:0 0 8px;border-radius:12px}.o{font-size:21px;padding:18px 14px}</style></head><body><div id=bg></div><div id=gr></div><div id="a"></div><script>
+.o{font-size:21px;padding:18px 14px}.gg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0}.gc{font:inherit;font-size:30px;padding:12px 2px;border:3px solid #cfe0f5;border-radius:14px;background:#fff;cursor:pointer;transition:transform .15s}.gc small{font-size:11px;color:#495057}.gc.f{background:#fff3bf;transform:scale(1.05)}.gc.d{background:#d3f9d8;border-color:#51cf66}.gc.sk{animation:sk .4s}.gs{display:flex;gap:6px;justify-content:center;margin:8px 0}.gs span{width:48px;height:48px;border:3px dashed #adb5bd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#868e96}.gb .b{font-size:22px}.pop{animation:pop .3s}@keyframes sk{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}</style></head><body><div id=bg></div><div id=gr></div><div id="a"></div><script>
 ['🌈','☁️','☀️','🦋','🌻','🐞','🌱','🐝','🍃','⭐','🐛','🌳','☁️','🌼','🍄','🐦'].forEach((e,i)=>bg.insertAdjacentHTML('beforeend',`<span style="left:${i*37%88+2}vw;top:${i*53%80+3}vh;font-size:${28+i*7%26}px;animation-delay:${i%5*.7}s">${e}</span>`));
 const FC={apiKey:"AIzaSyB91biFPmWJJj-TWkqj4LGWCr_UY7FdMhg",authDomain:"science-p1.firebaseapp.com",projectId:"science-p1",storageBucket:"science-p1.firebasestorage.app",messagingSenderId:"866283047084",appId:"1:866283047084:web:eb31d746992355592d3709"};
 const Q=(t,a,b,c)=>[t,[a,b,c],0];
@@ -31,42 +31,34 @@ const UN=[
 ['👀','สังเกตและลงความเห็น','สังเกตด้วย ตา หู จมูก ลิ้น ผิวหนัง ส่วนการลงความเห็นคือนำสิ่งที่สังเกตได้รวมกับประสบการณ์เดิมมาอธิบาย เล่นถุงปริศนาโดยเริ่มจากเขย่าและฟังเสียงก่อน'],
 ['🧩','จำแนกประเภท','จัดสิ่งของเป็นกลุ่มตามความเหมือนหรือความต่าง เช่น สี ขนาด รูปร่าง ช่วยให้หยิบง่าย หายก็รู้ ดูก็งามตา'],
 ['🔮','พยากรณ์','นำข้อมูลและประสบการณ์เดิมมาคาดการณ์ล่วงหน้า เช่น ท้องฟ้ามืดครึ้ม ลมแรง ฝนอาจจะตก']],
-[Q('ใช้อะไรดมกลิ่น?','👃 จมูก','👁️ ตา','👂 หู'),
-Q('ใช้อะไรฟังเสียง?','👂 หู','👃 จมูก','✋ มือ'),
-Q('เล่นถุงปริศนา เริ่มทำอะไรก่อน?','🔔 เขย่าฟังเสียง','👅 ชิมรส','👀 เปิดตาดู'),
-Q('ก่อนวางของในน้ำ เราควรทำอะไร?','🤔 เดาก่อน','😴 นอนหลับ','🙈 ให้เพื่อนทำ'),
-Q('จัดกระดุมเป็นกลุ่ม ดูอะไรได้?','🎨 สี รูปร่าง ขนาด','🔊 เสียง','👃 กลิ่น'),
-Q('การจัดของเป็นกลุ่ม เรียกว่า?','🧩 จำแนก','🔮 พยากรณ์','👃 ดมกลิ่น'),
-Q('ฟ้ามืดครึ้ม ลมแรง จะเกิดอะไร?','🌧️ ฝนจะตก','☀️ แดดจ้า','❄️ หิมะตก'),
-Q('การเดาว่าจะเกิดอะไร เรียกว่า?','🔮 พยากรณ์','🧩 จำแนก','👀 สังเกต'),
-Q('วิทยาศาสตร์เริ่มจากอะไร?','🤔 ความสงสัย','😴 การนอน','🎮 การเล่นเกม'),
-Q('ขั้นแรกของการหาคำตอบคืออะไร?','❓ ตั้งคำถาม','📣 เล่าให้ฟัง','🗑️ ทิ้งของ')],
-[Q('วาดรูปหรือเล่าให้เพื่อนฟังสิ่งที่ค้นพบ คือขั้นใด','การสื่อสาร','การตั้งคำถาม','การดมกลิ่น'),
-Q('เราใช้ตาสังเกตอะไร','สีและรูปร่าง','กลิ่น','รสชาติ'),
-Q('จำแนกกระดุมตามอะไรได้','สี ขนาด หรือรูปร่าง','เสียงที่ได้ยิน','กลิ่น'),
-Q('เห็นไอศกรีมละลายและได้กลิ่นหวาน จึงคิดว่าเป็นรสที่ชอบ คือทักษะใด','การลงความเห็นจากข้อมูล','การพยากรณ์','การจำแนกประเภท'),
-Q('ก่อนลองทำกิจกรรม จมหรือลอย เราควรทำอะไร','คาดคะเนก่อนว่าจะจมหรือลอย','ไม่ต้องคิดอะไร','ให้เพื่อนทำแทน')]],
+[Q('รู้ว่าดอกไม้หอม ใช้อะไร?','👃 จมูก','👁️ ตา','👂 หู'),
+Q('รู้ว่าน้ำแข็งเย็น ใช้อะไร?','✋ มือสัมผัส','👂 หู','👃 จมูก'),
+Q('รู้ว่ามะนาวเปรี้ยว ใช้อะไร?','👅 ลิ้น','👁️ ตา','✋ มือ'),
+Q('อะไรสีไม่เหมือนพวก?','🍌 กล้วย','🍎 แอปเปิล','🍓 สตรอว์เบอร์รี'),
+Q('อะไรทรงกลม?','⚽ ลูกบอล','📦 กล่อง','📏 ไม้บรรทัด'),
+Q('เก็บเสื้อกับกางเกงแยกกลุ่ม ดีอย่างไร?','🔎 หาเจอง่าย','🙈 หาไม่เจอ','💥 ของแตก'),
+Q('เห็นเมฆดำ ลมแรง คาดว่าจะเกิดอะไร?','🌧️ ฝนจะตก','☀️ แดดจ้า','❄️ หิมะตก'),
+Q('เห็นเด็กถือร่ม เสื้อเปียก คิดว่าเกิดอะไร?','🌧️ ฝนตก','☀️ แดดออก','🌙 กลางคืน'),
+Q('ได้กลิ่นหอม เห็นควันลอยจากหม้อ คิดว่า?','🍲 กำลังทำอาหาร','🌳 ต้นไม้โต','🚗 รถเสีย'),
+Q('อะไรจะลอยน้ำ?','🛟 แผ่นโฟม','🪨 หิน','🥄 ช้อนโลหะ')],
+[]],
 ['หน่วยที่ 2 ตัวเรา สัตว์และพืชรอบตัวเรา','🌱','#37b24d','Q3hnP530gXY',[
 ['🧍','ร่างกายของเรา','สมองควบคุมการทำงาน หัวใจสูบฉีดเลือด ปอดช่วยหายใจ กระเพาะอาหารย่อยอาหาร กระดูกเป็นโครงร่างค้ำจุนร่างกาย'],
 ['👁️','ดูแลตาและหู','คิ้ว เปลือกตา ขนตาป้องกันดวงตา ใช้มือถือในที่สว่างและไม่ดูนานติดต่อกัน ไม่แคะหูและไม่ฟังเสียงดังมาก'],
 ['🛡️','ปลอดภัยไว้ก่อน','ใช้ผ้าจับของร้อน ไม่เล่นไฟและปลั๊กไฟ สวมหมวกนิรภัยตอนขี่จักรยาน สวมรองเท้าเมื่อเดินนอกบ้าน'],
 ['🐧','สัตว์และพืช','สัตว์เคลื่อนที่ได้ พืชเคลื่อนที่ไม่ได้ เพนกวินมีปีกคล้ายครีบช่วยว่ายน้ำ ปลาตีนใช้ครีบเดินบนดินเลน รากดูดน้ำ ใบสร้างอาหาร'],
 ['🌳','บ้านของสัตว์และพืช','ต้องมีอาหาร น้ำ ที่อยู่ และที่หลบภัย ถ้าป่าถูกทำลาย นกเงือกและช้างป่าจะอยู่ยากขึ้น']],
-[Q('หัวใจส่งอะไรไปทั่วตัว?','🩸 เลือด','🍚 ข้าว','🎵 เสียง'),
-Q('เราใช้อะไรหายใจ?','🫁 ปอด','🦴 กระดูก','🧠 สมอง'),
-Q('อะไรเป็นโครงร่างของเรา?','🦴 กระดูก','🫁 ปอด','🧠 สมอง'),
-Q('คิ้วกับขนตาช่วยป้องกันอะไร?','👁️ ตา','🦷 ฟัน','🦶 เท้า'),
-Q('ดูมือถือแบบไหนถูกต้อง?','💡 ที่สว่าง ไม่นาน','🌑 ในที่มืด','⏰ ดูทั้งวัน'),
-Q('จับของร้อนต้องใช้อะไร?','🧤 ผ้าจับของร้อน','✋ มือเปล่า','🦶 เท้า'),
-Q('ขี่จักรยานต้องใส่อะไร?','⛑️ หมวกนิรภัย','🎩 หมวกปาร์ตี้','🧣 ผ้าพันคอ'),
-Q('อะไรเคลื่อนที่ไม่ได้?','🌳 พืช','🐶 สุนัข','🐟 ปลา'),
-Q('รากของต้นไม้ทำอะไร?','💧 ดูดน้ำ','🎵 ร้องเพลง','👀 มองเห็น'),
-Q('นกเงือกหายากเพราะอะไร?','🌳 ป่าถูกทำลาย','🌈 รุ้งเยอะ','🍦 กินไอศกรีม')],
-[Q('สมองทำหน้าที่อะไร','ควบคุมการทำงานของร่างกาย','ย่อยอาหาร','สูบฉีดเลือด'),
-Q('สวมหมวกนิรภัยตอนขี่จักรยานเพื่ออะไร','ป้องกันศีรษะ','ให้ขี่เร็วขึ้น','ให้ร้อนขึ้น'),
-Q('เพนกวินมีปีกคล้ายครีบ ช่วยเรื่องอะไร','ว่ายน้ำ','บินสูง','ปีนต้นไม้'),
-Q('ใบของพืชทำหน้าที่อะไร','สร้างอาหาร','ดูดน้ำจากดิน','ยึดลำต้นกับดิน'),
-Q('ช้างป่าออกมากินพืชผลของชาวบ้านเพราะอะไร','อาหารหรือน้ำในป่าลดลง','ชอบเดินเที่ยว','อยากไปโรงเรียน')]],
+[Q('อวัยวะอะไรส่งเลือดไปทั่วตัว?','❤️ หัวใจ','🫁 ปอด','🧠 สมอง'),
+Q('อะไรไม่ใช่ส่วนของร่างกาย?','🪑 เก้าอี้','🦶 เท้า','✋ มือ'),
+Q('จะหยิบจับของ ใช้อะไร?','✋ มือ','🦶 เท้า','👂 หู'),
+Q('อะไรเคลื่อนที่ไม่ได้?','🌳 ต้นไม้','🐶 สุนัข','🐟 ปลา'),
+Q('อะไรไม่ใช่สัตว์?','🌷 ดอกไม้','🐦 นก','🐟 ปลา'),
+Q('สัตว์ชนิดใดมีครีบ?','🐟 ปลา','🐦 นก','🐕 สุนัข'),
+Q('ส่วนไหนของต้นไม้อยู่ใต้ดิน?','🌱 ราก','🍃 ใบ','🌸 ดอก'),
+Q('ปลาควรอยู่ที่ไหน?','🌊 ในน้ำ','🏜️ ในทะเลทราย','🌳 บนยอดไม้'),
+Q('ป่าถูกทำลาย นกเงือกจะเป็นอย่างไร?','😢 อาหารและบ้านน้อยลง','😄 มีบ้านเพิ่ม','🎉 แข็งแรงขึ้น'),
+Q('จับของร้อน ทำแบบไหนปลอดภัย?','🧤 ใช้ผ้าจับ','✋ จับตรง ๆ','🦶 ใช้เท้าจับ')],
+[]],
 ['หน่วยที่ 3 สิ่งต่าง ๆ รอบตัวเรา','🧰','#f59f00','srRTrpABjbY',[
 ['🍽️','วัตถุและวัสดุ','วัตถุคือสิ่งของที่เราใช้ เช่น จาน ขวดน้ำ วัสดุคือสิ่งที่นำมาทำวัตถุ เช่น ผ้า ไม้ โลหะ แก้ว พลาสติก'],
 ['🪵','วัสดุธรรมชาติและมนุษย์ทำ','หิน ดิน ไม้ เป็นวัสดุจากธรรมชาติ พลาสติกและกระดาษเป็นวัสดุที่มนุษย์สร้างขึ้น'],
@@ -74,42 +66,34 @@ Q('ช้างป่าออกมากินพืชผลของชา�
 ['☂️','วัตถุกับวัสดุ','วัสดุชนิดเดียวทำวัตถุได้หลายอย่าง จานทำจากพลาสติก แก้ว หรือกระเบื้องได้ ร่มทำจากผ้า พลาสติก และโลหะ'],
 ['🔔','เสียงเกิดจากอะไร','เสียงเกิดจากการสั่นสะเทือน เมื่อหยุดสั่นเสียงก็หยุด จิ้งหรีดใช้ปีกขัดสีกันจนสั่นเกิดเสียง'],
 ['📢','เสียงรอบตัว','เสียงฟ้าร้องและเสียงนกร้องเกิดเองตามธรรมชาติ เสียงกระดิ่งรถขายขนมและเสียงรถพยาบาลมนุษย์สร้างขึ้น เสียงเดินทางไปได้ทุกทิศทาง']],
-[Q('อะไรนุ่ม?','🧽 ฟองน้ำ','🪨 หิน','🔩 เหล็ก'),
-Q('อะไรยืดได้?','🎈 ยางรัด','🥛 แก้ว','🧱 อิฐ'),
-Q('อะไรใส มองทะลุได้?','🥛 แก้ว','🧱 อิฐ','🪵 ไม้'),
-Q('อะไรเงาวับสะท้อนแสง?','🥄 ช้อนโลหะ','🧸 ผ้า','🪵 ไม้'),
-Q('พลาสติกใครทำขึ้น?','👷 คนทำขึ้น','⛰️ เกิดเอง','🐶 สุนัขทำ'),
-Q('หินมาจากที่ไหน?','⛰️ ธรรมชาติ','🏭 โรงงาน','🛒 ร้านค้า'),
-Q('ร่มทำจากอะไรบ้าง?','☂️ ผ้า พลาสติก โลหะ','🍞 ขนมปัง','🥛 แก้วอย่างเดียว'),
+[Q('อะไรนุ่มที่สุด?','🧽 ฟองน้ำ','🪨 หิน','🔩 เหล็ก'),
+Q('อะไรยืดได้?','🎈 ยาง','🥛 แก้ว','🧱 อิฐ'),
+Q('อะไรมองทะลุได้?','🥛 แก้วใส','🧱 อิฐ','🪵 ไม้'),
+Q('อันไหนทำจากวัสดุต่างจากพวก?','🥄 ช้อนโลหะ','🪑 เก้าอี้ไม้','🚪 ประตูไม้'),
+Q('อะไรคนทำขึ้น ไม่ได้เกิดเอง?','🥤 พลาสติก','🪨 หิน','🪵 ไม้'),
+Q('อะไรเกิดเองตามธรรมชาติ?','🪨 หิน','🥤 พลาสติก','📄 กระดาษ'),
 Q('เสียงเกิดจากอะไร?','〰️ การสั่น','😴 การอยู่นิ่ง','🌈 สีรุ้ง'),
 Q('เสียงไหนเกิดเองตามธรรมชาติ?','⛈️ ฟ้าร้อง','📯 นกหวีด','⏰ นาฬิกาปลุก'),
-Q('เสียงเดินทางไปทางไหน?','🔊 ทุกทิศทาง','⬆️ ขึ้นอย่างเดียว','➡️ ขวาอย่างเดียว')],
-[Q('วัสดุใดมันวาวสะท้อนแสง','โลหะ','ผ้า','ไม้'),
-Q('ร่มทำจากวัสดุอะไรบ้าง','ผ้า พลาสติก และโลหะ','กระดาษอย่างเดียว','แก้วอย่างเดียว'),
-Q('ข้อใดเป็นวัสดุที่มนุษย์สร้างขึ้น','พลาสติก','หิน','ดิน'),
-Q('เสียงจิ้งหรีดเกิดจากอะไร','ปีกขัดสีกันจนสั่น','ร้องในลำคอ','ลมพัดผ่านขา'),
-Q('ข้อใดเป็นเสียงที่มนุษย์สร้างขึ้น','เสียงกระดิ่งรถขายขนม','เสียงน้ำตก','เสียงนกร้อง')]],
+Q('ตีกลองแล้วเอามือกดหน้ากลองแน่น เสียงจะ?','🤫 เบาลงหรือหยุด','🔊 ดังขึ้น','🎵 เป็นเพลง'),
+Q('เสียงรถพยาบาล คนรอบ ๆ ได้ยินไหม?','👂 ได้ยินทุกทิศทาง','🙉 ได้ยินด้านหน้าเท่านั้น','🔇 ไม่มีใครได้ยิน')],
+[]],
 ['หน่วยที่ 4 โลกและท้องฟ้าของเรา','🌏','#9c36b5','BtIC9oFdtWI',[
 ['🪨','หินรอบตัว','หินแต่ละก้อนต่างกันที่สี รูปทรง และเนื้อหิน ใช้ตา มือ และแว่นขยายช่วยสังเกต'],
 ['🦶','ใช้ประโยชน์จากหิน','หินเนื้อสากใช้ขัดส้นเท้าหรือลับมีด หินกลมผิวเรียบใช้ทับกระดาษ หินเล็กหลายสีใช้ทำแผ่นนวดเท้า'],
 ['🌍','โลกก็เป็นดาว','โลกเป็นดาวดวงหนึ่งคล้ายผลส้ม ท้องฟ้าที่เห็นเหมือนครึ่งทรงกลมครอบเรา ดวงอาทิตย์เป็นดาว ส่วนเมฆ เครื่องบิน ว่าวไม่ใช่ดาว'],
 ['🌙','กลางวันดาวหายไปไหน','กลางวันแสงดวงอาทิตย์สว่างมากกลบแสงดาว กลางคืนไม่มีแสงดวงอาทิตย์ จึงเห็นดาวมาก บางเช้าหรือเย็นเห็นดวงจันทร์ ดาวศุกร์ ดาวพุธได้'],
 ['🔦','แบบจำลองและความปลอดภัย','เปิดหลอดไฟห้องแทนดวงอาทิตย์ แสงไฟฉายแทนดาวจะมองเห็นยากขึ้น ห้ามจ้องดวงอาทิตย์ด้วยตาเปล่า']],
-[Q('หินต่างกันที่อะไร?','🎨 สี รูปร่าง ผิว','🍎 ผลไม้','🎵 เสียงเพลง'),
-Q('แว่นขยายช่วยอะไร?','🔍 ดูให้ชัด','🎧 ฟังเพลง','🍽️ กินข้าว'),
-Q('หินสากใช้ทำอะไร?','🦶 ขัดส้นเท้า','🍜 กินเป็นอาหาร','🛏️ ห่มนอน'),
-Q('หินกลมเรียบใช้ทำอะไร?','📄 ทับกระดาษ','🧃 ดื่มน้ำ','👟 ใส่เดิน'),
-Q('โลกคล้ายอะไร?','🍊 ผลส้ม','📦 กล่อง','📄 กระดาษแบน'),
-Q('อะไรเป็นดาว?','☀️ ดวงอาทิตย์','☁️ เมฆ','🪁 ว่าว'),
+[Q('หินสองก้อนต่างกันที่อะไรได้?','🎨 สี รูปร่าง ผิว','🎵 เสียงเพลง','🍎 รสผลไม้'),
+Q('ผิวหินแบบไหนขัดส้นเท้าได้?','🪨 ผิวสาก','🧈 เรียบลื่นมาก','🧽 นุ่ม'),
+Q('หินแบบไหนเหมาะทับกระดาษ?','⚪ กลม ผิวเรียบ','🔺 แหลมคม','🧽 นุ่มยุ่ย'),
 Q('อะไรไม่ใช่ดาว?','✈️ เครื่องบิน','☀️ ดวงอาทิตย์','🌍 โลก'),
-Q('กลางวันทำไมไม่เห็นดาว?','☀️ แสงอาทิตย์จ้า','😴 ดาวไปนอน','🌧️ ดาวตกลงมา'),
-Q('กลางคืนทำไมเห็นดาว?','🌙 ไม่มีแสงอาทิตย์','🛒 ดาวมาเพิ่ม','🏠 ดาวเข้าบ้าน'),
-Q('ห้ามทำอะไรกับดวงอาทิตย์?','🚫 จ้องด้วยตาเปล่า','🙋 โบกมือทักทาย','🎨 วาดรูป')],
-[Q('หินที่ใช้ลับมีดมีเนื้ออย่างไร','เนื้อสาก','นุ่มเหมือนฟองน้ำ','ใสเหมือนแก้ว'),
-Q('เราใช้อวัยวะใดสังเกตสีและรูปทรงของหิน','ตา','หู','ลิ้น'),
-Q('ท้องฟ้าที่เรามองเห็นจากพื้นโลกคล้ายอะไร','ครึ่งทรงกลมที่ครอบเราอยู่','กล่องสี่เหลี่ยม','เส้นตรง'),
-Q('เปิดหลอดไฟห้องแทนดวงอาทิตย์ แสงไฟฉายแทนดาวจะเป็นอย่างไร','มองเห็นยากขึ้น','สว่างที่สุด','ไฟฉายดับเอง'),
-Q('ดวงจันทร์ ดาวศุกร์ ดาวพุธ บางวันเห็นได้เมื่อใด','ช่วงเช้าหรือเย็น','ไม่เคยเห็น','เที่ยงคืนเท่านั้น')]]];
+Q('อะไรเป็นดาว?','☀️ ดวงอาทิตย์','☁️ เมฆ','🪁 ว่าว'),
+Q('โลกรูปร่างคล้ายอะไร?','🍊 ผลส้ม','📄 แผ่นกระดาษ','📦 กล่อง'),
+Q('กลางวันทำไมไม่เห็นดาว?','☀️ แสงอาทิตย์สว่างกลบ','😴 ดาวไปนอน','🌧️ ดาวตกลงมา'),
+Q('กลางคืนทำไมเห็นดาว?','🌙 ไม่มีแสงอาทิตย์กลบ','🛒 ดาวมาเพิ่ม','🏠 ดาวเข้าบ้าน'),
+Q('ห้องสว่างจ้า แสงไฟฉายจะเป็นอย่างไร?','🔦 เห็นยากขึ้น','✨ เห็นชัดที่สุด','💤 ไฟฉายดับ'),
+Q('ห้ามทำอะไรกับดวงอาทิตย์?','🚫 จ้องด้วยตาเปล่า','🙋 โบกมือ','🎨 วาดรูป')],
+[]]];
 const CH=UN.map(u=>({t:u[0],e:u[1],v:u[3],s:u[4],pre:u[5],post:u[5],pr:u[6]}));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),A=document.getElementById('a'),sh=a=>[...a].sort(()=>Math.random()-.5),C=i=>P.c[i]=P.c[i]||{ps:{}},un=i=>TR||i==0||(P.c[i-1]||{}).ok;
 let U,P,db,cur=null,t=0,TR=0,D=0,BZ=0;
@@ -127,13 +111,13 @@ function gl(){const p=new firebase.auth.GoogleAuthProvider(),a=firebase.auth();a
 function trial(){TR=1;U={uid:'trial',name:'นักทดลอง'};P={c:{},sec:0,nm:'นักทดลอง'};home()}
 function out(){if(!TR)sv(1);TR=0;U=null;P=null;login()}
 function home(){BZ=0;cur=null;const b=document.getElementById('bk');if(b)b.style.display='none';A.style.paddingTop='';A.innerHTML=`<div class=hd><h1>🔬 วิทยาศาสตร์ ป.1</h1><p>สวัสดี น้อง${esc(P.nm||U.name)} 👋${TR?' · 🎈 โหมดทดลอง (ไม่บันทึกคะแนน)':' · เวลาเรียนรวม '+Math.round(P.sec/60)+' นาที'}</p></div>`+UN.map((u,i)=>{const k=C(i),o=un(i),m=k.vd&&k.sd;return `<button class=un style="--c:${u[2]}" ${o?`onclick="go(${i})"`:'disabled'}><div class=t><i>${o?u[1]:'🔒'}</i><span>${u[0]}${k.ok?' ⭐':''}</span></div><div class=s><span class="${k.pre!=null?'d':''}">ก่อนเรียน<br>${k.pre!=null?k.pre+'/10':'–'}</span><span class="${m?'d':''}">สื่อการสอน<br>${m?'✅':'–'}</span><span class="${k.rv!=null?'d':''}">ทบทวน<br>${k.rv!=null?k.rv+'/5':'–'}</span><span class="${k.ok?'d':''}">หลังเรียน<br>${k.n?k.best+'/10':'–'}</span></div></button>`}).join('')+`<button class="b g" onclick="out()">${TR?'กลับหน้าแรก':'ออกจากระบบ'}</button>`}
-function ask(q,h,cb){const o=sh(q[1].map((x,j)=>[x,j==q[2]]));A.innerHTML=`<div class=card><small>${h}</small><h2>${q[0]}</h2><button class='b g say' id=say>🔊 ฟังโจทย์</button>`+o.map((x,j)=>`<button class="b o" data-j=${j}>${x[0]}</button>`).join('')+'</div>';
-document.getElementById('say').onclick=()=>{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance((q[0]+' '+o.map(x=>x[0]).join(' หรือ ')).replace(/[\p{Extended_Pictographic}\uFE0F]/gu,''));u.lang='th-TH';speechSynthesis.speak(u)};A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const r=o[b.dataset.j][1];A.querySelectorAll('.o').forEach(x=>x.disabled=true);b.classList.add(r?'ok':'no');A.firstChild.insertAdjacentHTML('beforeend',`<p>${r?'🎉 ถูกต้อง!':'🤔 ยังไม่ใช่นะ ไว้ลองใหม่'}</p><button class=b id=n>ต่อไป ▶</button>`);document.getElementById('n').onclick=()=>{speechSynthesis.cancel();cb(r)}})}
+function ask(q,h,cb){const o=sh(q[1].map((x,j)=>[x,j==q[2]]));A.innerHTML=`<div class=card><small>${h}</small><h2>${q[0]}</h2>`+o.map((x,j)=>`<button class="b o" data-j=${j}>${x[0]}</button>`).join('')+'</div>';
+A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{const r=o[b.dataset.j][1];A.querySelectorAll('.o').forEach(x=>x.disabled=true);b.classList.add(r?'ok':'no');A.firstChild.insertAdjacentHTML('beforeend',`<p>${r?'🎉 ถูกต้อง!':'🤔 ยังไม่ใช่นะ ไว้ลองใหม่'}</p><button class=b id=n>ต่อไป ▶</button>`);document.getElementById('n').onclick=()=>cb(r)})}
 const SP=k=>'<div class=sp>'+['ก่อนเรียน','สื่อการสอน','ทบทวน','หลังเรียน'].map((x,j)=>`<span class="${j<k?'d':j==k?'c':''}">${x}</span>`).join('')+'</div>';
 function fx(){const E=['🎉','⭐','✨','🎈'];for(let j=0;j<30;j++){const e=document.createElement('span');e.className='cf';e.textContent=E[j%4];e.style.left=Math.random()*95+'vw';e.style.animationDelay=Math.random()*.8+'s';document.body.append(e);setTimeout(()=>e.remove(),3600)}}
-function res(t,c,n,b,fn,em,m){BZ=0;A.innerHTML=`<div class=card><small>${t}</small><div class=em>${em}</div><h2>ได้ ${c}/${n} ข้อ</h2><p>${m}</p><button class=b onclick="${fn}">${b}</button></div>`}
+function res(t,c,n,b,fn,em,m,u='ข้อ'){BZ=0;A.innerHTML=`<div class=card><small>${t}</small><div class=em>${em}</div><h2>ได้ ${c}/${n} ${u}</h2><p>${m}</p><button class=b onclick="${fn}">${b}</button></div>`}
 function go(i){cur=i;BZ=1;let b=document.getElementById('bk');if(!b){document.body.insertAdjacentHTML('beforeend','<button id=bk class="b g" style="position:fixed;top:6px;left:6px;z-index:9;padding:4px 10px;font-size:12px;border-radius:10px;opacity:.9" onclick="bk()">⬅ กลับหน้าหลัก</button>');b=document.getElementById('bk')}b.style.display='';A.style.paddingTop='36px';const k=C(i);k.pre==null?pre(i):!k.vd?vid(i):!k.sd?les(i,0):pr(i)}
-function bk(){if(BZ&&!confirm('แน่ใจหรือคะ น้อง'+(P.nm||U.name)+'? ถ้าออกตอนนี้ ต้องกลับมาเริ่มขั้นนี้ใหม่ตั้งแต่ต้นนะ'))return;speechSynthesis.cancel();home()}
+function bk(){if(BZ&&!confirm('แน่ใจหรือคะ น้อง'+(P.nm||U.name)+'? ถ้าออกตอนนี้ ต้องกลับมาเริ่มขั้นนี้ใหม่ตั้งแต่ต้นนะ'))return;home()}
 function pre(i,n=0,c=0){const q=CH[i].pre;BZ=1;if(n>=q.length){C(i).pre=c;sv(1);return res('แบบทดสอบก่อนเรียน',c,q.length,'ไปดูสื่อการสอน ▶',`vid(${i})`,c*2>=q.length?'🌟':'👍','ทำเสร็จแล้ว ไปเรียนรู้กันต่อเลย!')}ask(q[n],SP(0)+`ข้อ ${n+1}/${q.length}`,r=>pre(i,n+1,c+r))}
 function vid(i){const k=C(i),id=CH[i].v,g=x=>document.getElementById(x),w=Math.min(innerWidth-70,420);BZ=1;
 A.innerHTML=`<div class=card>${SP(1)}<small>วิดีโอ</small><iframe id=yt width=${w} height=${Math.round(w*9/16)} src="https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1&controls=0&disablekb=1&playsinline=1&modestbranding=1" allow="encrypted-media;fullscreen" style="border:0;max-width:100%"></iframe><p><button class="b g" id=pp>▶ เล่น / ⏸ หยุด</button></p><p id=vm>🔒 ดูวิดีโอให้จบก่อนนะ (กรอข้ามไม่ได้)</p><button class=b id=vn disabled onclick="les(${i},0)">ไปต่อ ▶</button></div>`;
@@ -142,7 +126,11 @@ mk=()=>{p=new YT.Player('yt',{events:{onStateChange:e=>{if(e.data==0&&last>=p.ge
 if(window.YT&&YT.Player)mk();else{window.onYouTubeIframeAPIReady=mk;if(!window.yts){yts=1;const x=document.createElement('script');x.src='https://www.youtube.com/iframe_api';document.head.append(x)}}
 setTimeout(()=>{if(g('vn')&&g('vn').disabled&&!(window.YT&&YT.Player))ok()},8000);if(k.vd)ok()}
 function les(i,s){const L=CH[i].s;BZ=1;if(s>=L.length){C(i).sd=1;sv(1);return pr(i)}const x=L[s];A.innerHTML=`<div class=card>${SP(1)}<small>สื่อการสอน · สไลด์ ${s+1}/${L.length}</small><div class=em>${x[0]}</div><h2>${x[1]}</h2><p>${x[2]}</p><button class=b onclick="les(${i},${s+1})">ต่อไป ▶</button></div>`}
-function pr(i,Q,f,c){const k=C(i);BZ=1;if(k.rv!=null)return po(i);const n=CH[i].pr.length;if(!Q){Q=CH[i].pr.map((_,j)=>j);f={};c=0}if(!Q.length){k.rv=c;sv(1);return res('ทบทวน',c,n,'ไปทำแบบทดสอบหลังเรียน ▶',`po(${i})`,c*2>=n?'🌟':'👍','ทบทวนเสร็จแล้ว (นับข้อที่ตอบถูกตั้งแต่ครั้งแรก)')}const j=Q[0];ask(CH[i].pr[j],SP(2)+`ทบทวน เหลืออีก ${Q.length} ข้อ`,r=>{if(r){if(!f[j])c++;f[j]=1;Q.shift()}else{f[j]=1;Q.push(Q.shift())}pr(i,Q,f,c)})}
+function gEnd(i,c){const k=C(i);k.rv=c;sv(1);if(c>=4)fx();res('ทบทวน (มินิเกม)',c,5,'ไปทำแบบทดสอบหลังเรียน ▶',`po(${i})`,c>=4?'🌟':'👍','เล่นจบแล้ว เก่งมาก!','ดาว ⭐')}
+function gTap(i,msg,I,Lb){I=sh(I.slice());let n=0,c=0,f=0;const g=x=>document.getElementById(x),st=()=>{if(n>=I.length)return gEnd(i,c);const x=I[n];f=0;A.innerHTML=`<div class=card>${SP(2)}<small>${msg} · ${n+1}/${I.length}</small><div class="em pop">${x[0]}</div><h2>${x[1]}</h2><div class=gb>${Lb.map((l,j)=>`<button class="b o" data-j=${j}>${l}</button>`).join('')}</div><p id=gm></p></div>`;A.querySelectorAll('.o').forEach(b=>b.onclick=()=>{if(+b.dataset.j==x[2]){if(!f)c++;A.querySelectorAll('.o').forEach(y=>y.disabled=true);b.classList.add('ok');g('gm').textContent='🎉 ถูกต้อง!';setTimeout(()=>{n++;st()},700)}else{f=1;b.classList.add('no');b.disabled=true;g('gm').textContent='🤔 ลองใหม่นะ'}})};st()}
+function gMatch(i){const D=sh([['👁️','🌈'],['👂','🔔'],['👃','🌸'],['👅','🍭'],['✋','🧊']].flatMap((p,j)=>[[p[0],j],[p[1],j]]));let o=[],m=0,w=0,lk=0;A.innerHTML=`<div class=card>${SP(2)}<small>มินิเกมจับคู่ · แตะการ์ดให้เจอคู่ อวัยวะ กับ สิ่งที่รับรู้</small><div class=gg>${D.map(()=>`<button class=gc>❓</button>`).join('')}</div><p id=gm>เจอคู่แล้ว 0/5</p></div>`;const B=[...A.querySelectorAll('.gc')];B.forEach((b,j)=>b.onclick=()=>{if(lk||b.classList.contains('d')||o.includes(j))return;b.textContent=D[j][0];b.classList.add('f');o.push(j);if(o.length==2){const[x,y]=o;if(D[x][1]==D[y][1]){B[x].classList.add('d');B[y].classList.add('d');o=[];m++;document.getElementById('gm').textContent='เจอคู่แล้ว '+m+'/5';if(m==5)setTimeout(()=>gEnd(i,Math.max(1,5-Math.floor(w/2))),700)}else{w++;lk=1;setTimeout(()=>{[x,y].forEach(k=>{B[k].textContent='❓';B[k].classList.remove('f')});o=[];lk=0},800)}}})}
+function gOrder(i){const S=[['🌰','เมล็ด'],['🌱','งอก'],['🌿','ต้นอ่อน'],['🌳','ต้นใหญ่'],['🍎','ออกผล']];let n=0,w=0;A.innerHTML=`<div class=card>${SP(2)}<small>มินิเกมเรียงลำดับ · แตะตามลำดับการเติบโตของต้นไม้ ตั้งแต่เมล็ดจนออกผล</small><div class=gs>${S.map((_,j)=>`<span id=s${j}>${j+1}</span>`).join('')}</div><div class=gg>${sh(S.map((x,j)=>[x[0],x[1],j])).map(c=>`<button class=gc data-j=${c[2]}>${c[0]}<br><small>${c[1]}</small></button>`).join('')}</div><p id=gm></p></div>`;A.querySelectorAll('.gc').forEach(b=>b.onclick=()=>{if(b.disabled)return;if(+b.dataset.j==n){b.disabled=true;b.classList.add('d');document.getElementById('s'+n).textContent=S[n][0];n++;if(n==5)setTimeout(()=>gEnd(i,Math.max(1,5-w)),700)}else{w++;b.classList.add('sk');setTimeout(()=>b.classList.remove('sk'),400);document.getElementById('gm').textContent='🤔 ยังไม่ใช่ ลองดูอีกที'}})}
+function pr(i){BZ=1;if(C(i).rv!=null)return po(i);[gMatch,gOrder,j=>gTap(j,'มินิเกม จริงหรือไม่จริง',[['🧽','ฟองน้ำ นุ่ม',0],['🪨','หิน นุ่ม',1],['🥛','แก้ว ใส',0],['🎈','ยาง ยืดได้',0],['📯','นกหวีด เป็นเสียงธรรมชาติ',1]],['✅ จริง','❌ ไม่จริง']),j=>gTap(j,'มินิเกมจัดของใส่กล่อง',[['☀️','ดวงอาทิตย์',0],['☁️','เมฆ',1],['🌍','โลก',0],['✈️','เครื่องบิน',1],['🪁','ว่าว',1]],['⭐ ดาว','🚫 ไม่ใช่ดาว'])][i](i)}
 function po(i,n=0,c=0){const q=CH[i].post,k=C(i);BZ=1;if(n>=q.length){const ok=c*10>=q.length*6;k.last=c;k.best=Math.max(k.best||0,c);k.n=(k.n||0)+1;if(ok)k.ok=1;sv(1);if(ok)fx();return res('แบบทดสอบหลังเรียน',c,q.length,ok?'กลับหน้าหลัก':'ไปเรียนอีกครั้ง',ok?'home()':`vid(${i})`,ok?'🏆':'💪',ok?'ผ่านแล้ว! ปลดล็อกหน่วยถัดไป':'ต้องได้อย่างน้อย 6 ข้อ ไปดูสื่อการสอนอีกรอบนะ')}ask(q[n],SP(3)+`ข้อ ${n+1}/${q.length}`,r=>po(i,n+1,c+r))}
 setInterval(()=>{if(U&&!document.hidden){P.sec++;D=1;if(cur!=null)C(cur).sec=(C(cur).sec||0)+1;if(++t%60==0)fl()}},1000);
 addEventListener('visibilitychange',()=>document.hidden&&U&&(D=1,fl()));
